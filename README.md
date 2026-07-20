@@ -1,6 +1,7 @@
 # Getting started with the SonarQube CLI
 
 > Last updated: July 2026
+> Demo commands and output reflect a June 2026 environment and may differ by release, project, organization, and entitlement. Check current product documentation before using this guide in a live environment.
 
 ## TL;DR
 
@@ -49,7 +50,7 @@ Dependency binaries (sonar-secrets, sca-scanner-cli) download on demand the firs
 **Conditional, depending on which capabilities you use:**
 
 - A project imported in SonarQube Cloud with at least one CI scan completed, for Agentic Analysis (`sonar analyze agentic`) and Context Augmentation (`sonar context`). The CI scan stores project context that these features retrieve on demand.
-- Docker, Podman, or Nerdctl running, for the SonarQube MCP Server (Step 3\)
+- Docker, Podman, or Nerdctl running, for the SonarQube MCP Server (Step 3)
 - [Team plan (annual billing) or Enterprise plan](https://www.sonarsource.com/plans-and-pricing/sonarcloud/) for the SonarQube Remediation Agent (`sonar remediate`)
 - Context Augmentation entitlement on your organization, for `sonar context` capabilities. Organizations without it still get Agentic Analysis and secrets scanning; the Context Augmentation setup is skipped during integration.
 - SonarQube Advanced Security with SCA enabled, for dependency risk scanning (`sonar analyze dependency-risks`). On SonarQube Server, requires version 2026.4 or later.
@@ -139,7 +140,7 @@ Running SonarQube Agentic Analysis...
   ...
 ```
 
-Secrets run first. If the secrets scan detects a hardcoded credential, Agentic Analysis is skipped and the CLI exits with code 51\. Both analyses passing clean yields exit code 0\.
+Secrets run first. If the secrets scan detects a hardcoded credential, Agentic Analysis is skipped and the CLI exits with code 51. Both analyses passing clean yields exit code 0.
 
 ### Secrets scanning
 
@@ -256,7 +257,7 @@ Recommendations:
 ❌ Found 1 unresolved dependency risk.
 ```
 
-The scan found CVE-2026-6860 in vertx-core@5.0.7 with a CVSS score of 6.9 and recommended upgrading to 5.0.12. The MISSING\_LOCKFILE and INEXACT\_VERSIONS errors are expected for Maven projects that don't use dependency locking; they don't prevent the vulnerability scan from running.
+The scan found CVE-2026-6860 in vertx-core@5.0.7 with a CVSS score of 6.9 and recommended upgrading to 5.0.12. The MISSING_LOCKFILE and INEXACT_VERSIONS errors are expected for Maven projects that don't use dependency locking; they don't prevent the vulnerability scan from running.
 
 Dependency risk scanning supports `--format json`, `--format toon`, and `--format table` output. Filter results by status with `--statuses`:
 
